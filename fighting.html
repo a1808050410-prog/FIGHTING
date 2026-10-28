@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fighting — Học theo cách của bạn</title>
+<style>
+:root{--ink:#26324b;--muted:#68738a;--bg:#f6f7fc;--card:#fff;--purple:#6d5ce8;--purple2:#eeeaff;--teal:#dff6ef;--peach:#fff0e5;--line:#e8eaf3;--shadow:0 10px 30px #303a6410}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 15px;font-weight:650;transition:.15s}button:hover{transform:translateY(-1px)}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #bdb5ff;outline-offset:2px}
+.primary{background:var(--purple);color:white}.soft{background:var(--purple2);color:var(--purple)}.neutral{background:#f0f2f8;color:var(--ink)}.danger{background:#fff0f0;color:#b34c54}
+.shell{max-width:1200px;margin:auto;padding:22px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:20px;letter-spacing:-.5px}.logo{display:grid;place-items:center;background:var(--purple);color:#fff;width:44px;height:44px;border-radius:15px;font-size:22px}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:600;letter-spacing:.5px}.tag{background:#e6f7f0;color:#237d68;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:750}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:22px}.sidebar{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:13px;height:max-content;position:sticky;top:14px;box-shadow:var(--shadow)}.navbtn{width:100%;display:flex;gap:11px;align-items:center;text-align:left;background:transparent;color:var(--muted);margin:3px 0;padding:12px}.navbtn.active{background:var(--purple2);color:var(--purple)}.navbtn span:first-child{width:24px;text-align:center;font-size:18px}.side-note{background:#f8f7ff;border-radius:15px;padding:14px;margin-top:20px;font-size:12px;color:var(--muted)}.side-note strong{color:var(--ink);display:block;margin-bottom:5px}
+main{min-width:0}.welcome{background:linear-gradient(120deg,#ece9ff,#f3f5ff 60%,#e6f8f3);padding:28px;border-radius:24px;display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:20px;overflow:hidden}.eyebrow{color:var(--purple);font-size:11px;font-weight:850;letter-spacing:1.5px;text-transform:uppercase}.welcome h1{font-size:clamp(25px,4vw,35px);line-height:1.2;letter-spacing:-1px;margin:8px 0}.welcome p{margin:0;color:#59647b;max-width:560px}.welcome-art{font-size:65px;min-width:85px;text-align:center}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:20px}.stat,.panel,.feature{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:18px;box-shadow:var(--shadow)}.stat .label{font-size:12px;color:var(--muted)}.stat .num{font-size:27px;font-weight:850;letter-spacing:-.8px;margin:5px 0}.stat .sub{font-size:11px;color:var(--muted)}.stat-icon{float:right;font-size:21px}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 13px}.section-head h2{font-size:19px;margin:0;letter-spacing:-.4px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.feature{display:flex;gap:15px;align-items:flex-start;text-align:left;color:inherit;width:100%;padding:20px;background:white}.feature:hover{border-color:#c9c1ff}.ficon{width:47px;height:47px;border-radius:15px;display:grid;place-items:center;font-size:23px;flex-shrink:0}.feature h3{margin:1px 0 5px;font-size:16px}.feature p{color:var(--muted);font-size:13px;margin:0 0 12px}.mini-link{font-size:12px;color:var(--purple);font-weight:800}
+.page{display:none}.page.active{display:block}.panel{padding:22px;margin-bottom:16px}.panel h2{margin:0 0 5px;font-size:21px}.muted{color:var(--muted)}.small{font-size:12px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.spaced{justify-content:space-between}.field{display:flex;flex-direction:column;gap:6px;margin:13px 0}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:white;color:var(--ink);width:100%;min-width:0}.field textarea{min-height:76px;resize:vertical}
+.timerbox{text-align:center;background:linear-gradient(145deg,#f1efff,#f2f8ff);border-radius:20px;padding:25px;margin:18px 0}.timer{font-size:clamp(52px,10vw,78px);font-weight:850;letter-spacing:-3px;line-height:1.2;font-variant-numeric:tabular-nums}.progress{height:8px;border-radius:99px;background:#e9eaf2;overflow:hidden;margin:12px 0}.progress div{height:100%;width:0;background:var(--purple);border-radius:99px;transition:width .25s}.timer-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.flashcard{min-height:205px;display:grid;place-items:center;text-align:center;padding:28px;background:linear-gradient(140deg,#f0edff,#f1fbf8);border:1px solid #e5e0ff;border-radius:20px;margin:18px 0;cursor:pointer}.flashcard .prompt{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--purple);font-weight:800}.flashcard .content{font-size:clamp(20px,3vw,27px);font-weight:780;max-width:620px;margin:13px auto}.flashcard .hint{font-size:12px;color:var(--muted)}.dots{display:flex;justify-content:center;gap:7px;margin:12px}.dot{width:7px;height:7px;background:#dedbed;border-radius:50%}.dot.active{background:var(--purple);width:22px;border-radius:9px}
+.question{padding:17px;border:1px solid var(--line);border-radius:15px;margin:14px 0}.question h3{font-size:15px;margin:0 0 12px}.option{display:flex;align-items:flex-start;gap:9px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;margin:7px 0;cursor:pointer}.option:has(input:checked){border-color:#9d92f5;background:#f8f6ff}.option input{margin-top:5px;accent-color:var(--purple)}.result{padding:16px;border-radius:14px;margin:14px 0}.result.good{background:#e6f7ef;color:#216a52}.result.bad{background:#fff0ed;color:#974b43}
+.bar-row{display:grid;grid-template-columns:95px minmax(0,1fr) 52px;gap:10px;align-items:center;margin:13px 0;font-size:12px}.bar-track{height:11px;background:#eef0f7;border-radius:99px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,#7b6be9,#77cdb5);border-radius:99px}.empty{padding:24px;text-align:center;background:#fafaff;border:1px dashed #dcdbea;border-radius:15px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:25px 0 8px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#26324b;color:white;padding:12px 18px;border-radius:12px;box-shadow:var(--shadow);z-index:10;max-width:90vw;text-align:center}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow-x:auto;gap:4px;padding:8px}.navbtn{width:auto;white-space:nowrap;margin:0;padding:10px}.side-note{display:none}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.welcome{padding:22px}.features{grid-template-columns:1fr}}
+@media(max-width:500px){.shell{padding:12px}.topbar{margin-bottom:14px}.brand{font-size:17px}.logo{width:39px;height:39px}.tag{font-size:10px;padding:6px 8px}.welcome{padding:19px;border-radius:19px}.welcome-art{font-size:43px;min-width:45px}.stat{padding:14px}.stat .num{font-size:23px}.panel{padding:16px}.bar-row{grid-template-columns:75px minmax(0,1fr) 42px;gap:7px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <div class="brand"><div class="logo">✦</div><div>FIGHTING<small>HỌC THEO CÁCH CỦA BẠN</small></div></div>
+  <div class="tag">✿ Mỗi người một hành trình</div>
+</header>
+<div class="layout">
+<aside class="sidebar" aria-label="Điều hướng">
+  <button class="navbtn active" data-page="home"><span>⌂</span> Tổng quan</button>
+  <button class="navbtn" data-page="timer"><span>◷</span> Thời gian học</button>
+  <button class="navbtn" data-page="cards"><span>▤</span> Flashcard</button>
+  <button class="navbtn" data-page="quiz"><span>✓</span> Kiểm tra</button>
+  <button class="navbtn" data-page="stats"><span>▥</span> Tiến bộ</button>
+  <div class="side-note"><strong>🌱 Ghi nhớ nhé</strong>Không cần học giống người khác. Hãy tìm cách học phù hợp với mục tiêu và nhịp độ của chính mình.</div>
+</aside>
+<main>
+<section class="page active" id="page-home">
+  <div class="welcome">
+    <div><div class="eyebrow">Chào mừng bạn đến với không gian học tập</div><h1>Học chủ động,<br>tiến bộ theo cách riêng.</h1><p>Đừng học chỉ vì mọi người đều đang học. Hãy hiểu mục tiêu của mình, học có kế hoạch và ghi nhận từng bước tiến nhỏ.</p></div>
+    <div class="welcome-art" aria-hidden="true">📚✨</div>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="stat-icon">⏱️</span><div class="label">Thời gian học</div><div class="num" id="home-time">0 phút</div><div class="sub">Tổng thời gian đã ghi nhận</div></div>
+    <div class="stat"><span class="stat-icon">🎯</span><div class="label">Phiên hoàn thành</div><div class="num" id="home-sessions">0</div><div class="sub">Các phiên học đã kết thúc</div></div>
+    <div class="stat"><span class="stat-icon">📝</span><div class="label">Bài kiểm tra</div><div class="num" id="home-quizzes">0</div><div class="sub">Lượt làm bài đã nộp</div></div>
+    <div class="stat"><span class="stat-icon">⭐</span><div class="label">Điểm trung bình</div><div class="num" id="home-score">—</div><div class="sub">Trên thang điểm 10</div></div>
+  </div>
+  <div class="section-head"><div><h2>Bắt đầu từ đâu?</h2><p>Chọn một công cụ phù hợp với nhu cầu hôm nay.</p></div></div>
+  <div class="features">
+    <button class="feature" data-goto="timer"><div class="ficon" style="background:#eeeaff">⏱️</div><div><h3>Phiên học tập trung</h3><p>Đặt thời gian học, nghỉ ngắn và ghi nhận phiên học.</p><span class="mini-link">BẮT ĐẦU HỌC →</span></div></button>
+    <button class="feature" data-goto="cards"><div class="ficon" style="background:#e4f8f0">🧠</div><div><h3>Ôn tập ghi nhớ</h3><p>Thử nhớ câu trả lời trước khi lật thẻ.</p><span class="mini-link">ÔN FLASHCARD →</span></div></button>
+    <button class="feature" data-goto="quiz"><div class="ficon" style="background:#fff0e5">✍️</div><div><h3>Kiểm tra kiến thức</h3><p>Làm bài trắc nghiệm và xem lời giải sau khi nộp.</p><span class="mini-link">LÀM BÀI →</span></div></button>
+    <button class="feature" data-goto="stats"><div class="ficon" style="background:#e8f1ff">📈</div><div><h3>Nhìn lại tiến bộ</h3><p>Theo dõi thời gian học và kết quả của chính mình.</p><span class="mini-link">XEM THỐNG KÊ →</span></div></button>
+  </div>
+  <div class="panel" style="margin-top:16px"><h2>💜 Một câu hỏi để suy ngẫm</h2><p class="muted">“Nếu bạn bè không học thêm một phương pháp nào đó, liệu mình vẫn chọn nó vì nó thực sự phù hợp với bản thân không?”</p><p class="small muted">Hãy xem đây là cơ hội tự suy ngẫm, không phải bài đánh giá hay chẩn đoán.</p></div>
+</section>
+
+<section class="page" id="page-timer">
+  <div class="panel">
+    <div class="eyebrow">Tập trung có chủ đích</div><h2>⏱️ Đồng hồ học tập</h2><p class="muted">Chọn một khoảng thời gian vừa sức. Bạn có thể điều chỉnh theo nhu cầu của mình.</p>
+    <div class="field"><label for="subject">Bạn đang học môn gì?</label><input id="subject" maxlength="60" placeholder="Ví dụ: Vật lí, Tiếng Anh, Ngữ văn"></div>
+    <div class="field"><label for="minutes">Thời gian tập trung (phút)</label><select id="minutes"><option value="15">15 phút</option><option value="25" selected>25 phút</option><option value="30">30 phút</option><option value="45">45 phút</option><option value="60">60 phút</option></select></div>
+    <div class="timerbox"><div class="eyebrow" id="timer-label">SẴN SÀNG BẮT ĐẦU</div><div class="timer" id="timer-display">25:00</div><div class="progress"><div id="timer-progress"></div></div><p class="muted small" id="timer-status">Tắt bớt thông báo nếu bạn muốn tập trung hơn.</p><div class="timer-actions"><button class="primary" id="timer-start">▶ Bắt đầu</button><button class="neutral" id="timer-reset">↺ Đặt lại</button></div></div>
+    <p class="small muted">Lưu ý: bộ đếm chỉ hoạt động trong website; nó không khóa ứng dụng khác. Khi hoàn thành phiên, thời gian được ghi vào thống kê trên trình duyệt này.</p>
+  </div>
+</section>
+
+<section class="page" id="page-cards">
+  <div class="panel">
+    <div class="eyebrow">Gợi nhớ chủ động</div><h2>🧠 Flashcard ghi nhớ</h2><p class="muted">Đọc câu hỏi, thử tự trả lời rồi bấm vào thẻ để xem đáp án.</p>
+    <div class="row"><div class="field" style="flex:1;min-width:180px;margin:0"><label for="deck">Chủ đề</label><select id="deck"><option value="study">Phương pháp học</option><option value="research">Nghiên cứu khoa học</option></select></div><span class="small muted" id="card-count">Thẻ 1/5</span></div>
+    <div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Bấm để lật thẻ"><div><div class="prompt" id="card-prompt">CÂU HỎI</div><div class="content" id="card-content"></div><div class="hint" id="card-hint">Bấm để xem đáp án ↻</div></div></div>
+    <div class="dots" id="card-dots"></div>
+    <div class="row spaced"><button class="neutral" id="card-prev">← Trước</button><button class="soft" id="card-flip">Lật thẻ ↻</button><button class="neutral" id="card-next">Tiếp →</button></div>
+    <div id="card-rating" style="display:none;margin-top:17px"><p><strong>Bạn nhớ được đáp án đến đâu?</strong></p><div class="row"><button class="danger" id="card-again">Cần ôn lại</button><button class="primary" id="card-known">Đã nhớ</button></div></div>
+    <div class="result good" id="card-feedback" style="display:none"></div>
+  </div>
+  <div class="panel"><h2>✍️ Tạo thẻ của bạn</h2><p class="muted small">Thẻ mới được lưu trong trình duyệt này.</p><div class="field"><label for="new-q">Mặt trước — câu hỏi</label><input id="new-q" maxlength="250" placeholder="Nhập câu hỏi"></div><div class="field"><label for="new-a">Mặt sau — đáp án</label><textarea id="new-a" maxlength="700" placeholder="Nhập câu trả lời"></textarea></div><button class="primary" id="add-card">＋ Thêm flashcard</button></div>
+</section>
+
+<section class="page" id="page-quiz">
+  <div class="panel">
+    <div class="eyebrow">Tự kiểm tra, không so sánh</div><h2>✍️ Bài kiểm tra ngắn</h2><p class="muted">Bài mẫu về thói quen học tập chủ động. Chọn đáp án phù hợp nhất rồi nộp bài để xem kết quả.</p>
+    <div id="quiz-form"></div><button class="primary" id="quiz-submit">Nộp bài và xem kết quả</button><div id="quiz-result" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="page" id="page-stats">
+  <div class="section-head"><div><h2>📈 Hành trình của bạn</h2><p>Thống kê hoạt động được lưu trên trình duyệt hiện tại.</p></div><button class="neutral" id="export-data">Xuất dữ liệu CSV</button></div>
+  <div class="stats">
+    <div class="stat"><span class="stat-icon">⏱️</span><div class="label">Tổng thời gian</div><div class="num" id="stats-time">0 phút</div><div class="sub">Phiên đã hoàn thành</div></div>
+    <div class="stat"><span class="stat-icon">📚</span><div class="label">Phiên học</div><div class="num" id="stats-sessions">0</div><div class="sub">Không tính phiên đang chạy</div></div>
+    <div class="stat"><span class="stat-icon">🧠</span><div class="label">Thẻ đã ôn</div><div class="num" id="stats-cards">0</div><div class="sub">Lượt tự đánh giá thẻ</div></div>
+    <div class="stat"><span class="stat-icon">🎯</span><div class="label">Điểm trung bình</div><div class="num" id="stats-score">—</div><div class="sub">Trên thang điểm 10</div></div>
+  </div>
+  <div class="panel"><h2>Thời gian học theo ngày</h2><p class="small muted">7 ngày gần nhất</p><div id="week-chart"></div></div>
+  <div class="panel"><h2>Lịch sử bài kiểm tra</h2><div id="quiz-history"></div></div>
+  <div class="panel"><h2>🌿 Nhắc nhở dành cho bạn</h2><p class="muted">Thống kê là công cụ để hiểu thói quen của chính mình, không phải để xếp hạng bản thân với bạn bè. Hãy chọn mục tiêu thực tế và điều chỉnh khi cần.</p><button class="danger" id="clear-data">Xóa dữ liệu trên trình duyệt này</button></div>
+</section>
+<footer>FIGHTING · Bản thử nghiệm phục vụ nghiên cứu khoa học xã hội và hành vi.<br>Dữ liệu mẫu và thống kê chỉ lưu trong trình duyệt này. Chưa phải hệ thống tài khoản trực tuyến.</footer>
+</main>
+</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const KEY='fighting-v1';
+const defaultData=()=>({sessions:[],quizzes:[],cardReviews:0,customCards:[]});
+let data=loadData();
+function loadData(){try{return {...defaultData(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{return defaultData()}}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));renderStats()}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function mins(n){return `${Math.floor(n)} phút`}
+function todayKey(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function showPage(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.page===name));if(name==='stats')renderStats();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.goto)));
+let toastTimer;function toast(msg){let t=document.querySelector('.toast');if(!t){t=document.createElement('div');t.className='toast';document.body.appendChild(t)}t.textContent=msg;clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.remove(),2600)}
+
+// Timer
+let remaining=25*60,totalSeconds=25*60,timerInterval=null,running=false,sessionSaved=false;
+function timerDisplay(){let m=Math.floor(remaining/60),s=remaining%60;$('timer-display').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;$('timer-progress').style.width=`${Math.max(0,Math.min(100,(1-remaining/totalSeconds)*100))}%`}
+function chooseTimer(){if(running)return;totalSeconds=Number($('minutes').value)*60;remaining=totalSeconds;sessionSaved=false;$('timer-label').textContent='SẴN SÀNG BẮT ĐẦU';$('timer-status').textContent='Tắt bớt thông báo nếu bạn muốn tập trung hơn.';$('timer-start').textContent='▶ Bắt đầu';timerDisplay()}
+$('minutes').addEventListener('change',chooseTimer);
+$('timer-start').addEventListener('click',()=>{
+ if(running){clearInterval(timerInterval);timerInterval=null;running=false;$('timer-start').textContent='▶ Tiếp tục';$('timer-label').textContent='ĐANG TẠM DỪNG';$('timer-status').textContent='Nghỉ một chút nếu cần, rồi tiếp tục khi sẵn sàng.';return}
+ if(remaining<=0)chooseTimer();
+ running=true;$('timer-start').textContent='Ⅱ Tạm dừng';$('timer-label').textContent='ĐANG TẬP TRUNG';$('timer-status').textContent='Bạn đang dành thời gian cho mục tiêu của mình.';
+ timerInterval=setInterval(()=>{remaining--;timerDisplay();if(remaining<=0){clearInterval(timerInterval);timerInterval=null;running=false;completeSession()}},1000)
+});
+function completeSession(){if(sessionSaved)return;sessionSaved=true;let subject=$('subject').value.trim()||'Chưa phân loại';data.sessions.push({date:todayKey(),minutes:Math.round(totalSeconds/60),subject,at:new Date().toISOString()});save();$('timer-label').textContent='HOÀN THÀNH PHIÊN HỌC';$('timer-status').textContent='Bạn đã hoàn thành một phiên. Hãy nghỉ ngắn nếu cần.';$('timer-start').textContent='▶ Phiên mới';toast('Tốt lắm! Phiên học đã được ghi nhận.');try{if('Notification'in window&&Notification.permission==='granted')new Notification('Hoàn thành phiên học',{body:'Bạn đã hoàn thành thời gian học đã đặt.'})}catch{}}
+$('timer-reset').addEventListener('click',()=>{clearInterval(timerInterval);timerInterval=null;running=false;chooseTimer();$('timer-start').textContent='▶ Bắt đầu';$('timer-status').textContent='Bộ đếm đã được đặt lại.'});
+timerDisplay();
+
+// Flashcards
+const baseCards={
+ study:[
+ {q:'Học chủ động là gì?',a:'Là tự đặt mục tiêu, lựa chọn cách học phù hợp và chủ động kiểm tra mức độ hiểu của mình.'},
+ {q:'Vì sao không nên bắt chước mọi phương pháp học của bạn bè?',a:'Vì mỗi người có mục tiêu, nền tảng, thời gian và cách tiếp thu khác nhau. Nên thử và đánh giá xem phương pháp có phù hợp không.'},
+ {q:'Một mục tiêu học tập tốt nên có đặc điểm gì?',a:'Cụ thể, thực tế, có thể theo dõi và có thời hạn phù hợp.'},
+ {q:'Flashcard giúp ghi nhớ bằng cách nào?',a:'Thẻ khuyến khích người học tự nhớ câu trả lời trước khi xem đáp án, thay vì chỉ đọc lại thụ động.'},
+ {q:'Nếu một phương pháp học không hiệu quả thì nên làm gì?',a:'Xem lại mục tiêu, khó khăn và kết quả; điều chỉnh phương pháp hoặc hỏi người có chuyên môn thay vì cố làm theo phong trào.'}
+ ],
+ research:[
+ {q:'Mục tiêu của khảo sát trong nghiên cứu là gì?',a:'Thu thập dữ liệu có hệ thống để mô tả hiện tượng hoặc trả lời câu hỏi nghiên cứu.'},
+ {q:'Vì sao cần bảo vệ thông tin người tham gia?',a:'Để tôn trọng quyền riêng tư, giảm nguy cơ lộ danh tính và duy trì sự tin cậy của nghiên cứu.'},
+ {q:'Tương quan có luôn chứng minh quan hệ nhân quả không?',a:'Không. Hai yếu tố có liên hệ chưa đủ để kết luận yếu tố này gây ra yếu tố kia.'},
+ {q:'Dữ liệu tự báo cáo có hạn chế gì?',a:'Người trả lời có thể nhớ không chính xác hoặc trả lời theo điều họ nghĩ là được mong đợi.'},
+ {q:'Vì sao cần báo cáo cả kết quả không như kỳ vọng?',a:'Để kết quả nghiên cứu trung thực, minh bạch và tránh chọn lọc dữ liệu theo mong muốn.'}
+ ]};
+let cards=[],cardIndex=0,flipped=false;
+function allCards(){return [...baseCards[$('deck').value],...data.customCards]}
+function renderCard(){cards=allCards();if(cardIndex>=cards.length)cardIndex=0;flipped=false;let c=cards[cardIndex];$('card-prompt').textContent='CÂU HỎI';$('card-content').textContent=c.q;$('card-hint').textContent='Bấm để xem đáp án ↻';$('card-count').textContent=`Thẻ ${cardIndex+1}/${cards.length}`;$('card-rating').style.display='none';$('card-feedback').style.display='none';$('card-dots').innerHTML=cards.map((_,i)=>`<span class="dot ${i===cardIndex?'active':''}"></span>`).join('')}
+function flipCard(){if(!cards.length)return;flipped=!flipped;$('card-prompt').textContent=flipped?'ĐÁP ÁN':'CÂU HỎI';$('card-content').textContent=flipped?cards[cardIndex].a:cards[cardIndex].q;$('card-hint').textContent=flipped?'Tự đánh giá mức độ ghi nhớ bên dưới':'Bấm để xem đáp án ↻';$('card-rating').style.display=flipped?'block':'none'}
+$('flashcard').addEventListener('click',flipCard);$('flashcard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flipCard()}});
+$('card-flip').addEventListener('click',flipCard);$('card-prev').addEventListener('click',()=>{cardIndex=(cardIndex-1+cards.length)%cards.length;renderCard()});$('card-next').addEventListener('click',()=>{cardIndex=(cardIndex+1)%cards.length;renderCard()});$('deck').addEventListener('change',()=>{cardIndex=0;renderCard()});
+function rateCard(known){data.cardReviews++;save();$('card-rating').style.display='none';$('card-feedback').style.display='block';$('card-feedback').textContent=known?'Đã ghi nhận: bạn tự đánh giá là đã nhớ thẻ này.':'Đã ghi nhận: hãy quay lại thẻ này trong lần ôn tập tiếp theo.';toast('Đã ghi nhận lượt tự đánh giá.')}
+$('card-again').addEventListener('click',()=>rateCard(false));$('card-known').addEventListener('click',()=>rateCard(true));
+$('add-card').addEventListener('click',()=>{let q=$('new-q').value.trim(),a=$('new-a').value.trim();if(!q||!a){toast('Hãy nhập cả câu hỏi và đáp án.');return}data.customCards.push({q,a});save();$('new-q').value='';$('new-a').value='';cardIndex=allCards().length-1;renderCard();toast('Đã thêm flashcard mới.')});
+renderCard();
+
+// Quiz
+const questions=[
+ {q:'1. Khi thấy nhiều bạn học theo một phương pháp mới, lựa chọn phù hợp nhất là gì?',opts:['Làm theo ngay để không bị tụt lại','Tìm hiểu, thử nghiệm phù hợp và tự đánh giá hiệu quả','Cho rằng phương pháp đó chắc chắn không tốt','Bỏ phương pháp mình đang dùng dù nó hiệu quả'],ans:1,why:'Tìm hiểu và đánh giá giúp lựa chọn dựa trên mục tiêu và trải nghiệm của chính mình.'},
+ {q:'2. Mục đích chính của việc đặt mục tiêu học tập cá nhân là gì?',opts:['Để có thành tích cao hơn tất cả bạn bè','Để học càng nhiều giờ càng tốt','Để định hướng và theo dõi tiến bộ của bản thân','Để không bao giờ cần thay đổi kế hoạch'],ans:2,why:'Mục tiêu giúp định hướng hành động và điều chỉnh kế hoạch khi cần.'},
+ {q:'3. Trong khảo sát hành vi học tập, cách làm nào phù hợp?',opts:['Tự tạo số liệu cho đẹp','Chỉ công bố câu trả lời ủng hộ giả thuyết','Thu thập và báo cáo dữ liệu trung thực, bảo vệ thông tin người tham gia','Ép mọi người trả lời theo ý mình'],ans:2,why:'Nghiên cứu cần trung thực, tôn trọng người tham gia và bảo vệ thông tin cá nhân.'},
+ {q:'4. Khi điểm kiểm tra thấp hơn mong đợi, nên làm gì?',opts:['Kết luận mình kém hơn các bạn','Xem lại lỗi sai, cách ôn tập và điều chỉnh kế hoạch','Học theo bất cứ ai đạt điểm cao','Bỏ hẳn môn học đó'],ans:1,why:'Phân tích lỗi và điều chỉnh là cách dùng kết quả để học hỏi.'},
+ {q:'5. Phát biểu nào đúng về tương quan trong nghiên cứu?',opts:['Hai yếu tố liên hệ thì chắc chắn yếu tố này gây ra yếu tố kia','Tương quan luôn là bằng chứng tuyệt đối','Tương quan cho thấy mối liên hệ nhưng chưa đủ để chứng minh nhân quả','Không thể nghiên cứu mối liên hệ giữa các yếu tố'],ans:2,why:'Tương quan không tự nó chứng minh quan hệ nhân quả; cần thiết kế và bằng chứng phù hợp.'}
+];
+let submitted=false;
+function renderQuiz(){submitted=false;$('quiz-result').innerHTML='';$('quiz-submit').disabled=false;$('quiz-submit').style.opacity='1';$('quiz-form').innerHTML=questions.map((q,i)=>`<div class="question"><h3>${escapeHtml(q.q)}</h3>${q.opts.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"><span>${String.fromCharCode(65+j)}. ${escapeHtml(o)}</span></label>`).join('')}<div id="why${i}" class="small" style="display:none;margin-top:10px"></div></div>`).join('')}
+$('quiz-submit').addEventListener('click',()=>{if(submitted){renderQuiz();return}let answers=questions.map((q,i)=>{let v=document.querySelector(`input[name="q${i}"]:checked`);return v?Number(v.value):-1});if(answers.some(a=>a<0)){toast('Bạn hãy trả lời tất cả câu hỏi trước khi nộp.');return}let correct=answers.filter((a,i)=>a===questions[i].ans).length,score=correct/questions.length*10;submitted=true;data.quizzes.push({date:todayKey(),correct,total:questions.length,score:Number(score.toFixed(1)),at:new Date().toISOString()});save();questions.forEach((q,i)=>{let el=$('why'+i);el.style.display='block';el.innerHTML=`<span style="color:${answers[i]===q.ans?'#237d68':'#b34c54'};font-weight:800">${answers[i]===q.ans?'✓ Chính xác':'✗ Chưa chính xác'}</span> — ${escapeHtml(q.why)}`});$('quiz-result').innerHTML=`<div class="result ${score>=6?'good':'bad'}"><strong>Kết quả: ${correct}/${questions.length} câu · ${score.toFixed(1)}/10 điểm</strong><br>${score>=8?'Bạn đã nắm khá tốt các nội dung này.':score>=6?'Bạn đã có nền tảng; hãy xem lại lời giải và thử lại.':'Đừng nản nhé. Hãy đọc phần giải thích rồi thử lại khi sẵn sàng.'}<br><span class="small">Điểm chỉ phản ánh bài kiểm tra mẫu này, không đại diện cho năng lực học tập tổng thể.</span></div>`;$('quiz-submit').textContent='Làm lại bài kiểm tra';toast('Đã lưu kết quả bài kiểm tra.')});
+renderQuiz();
+
+// Statistics
+function renderStats(){
+ const total=data.sessions.reduce((s,x)=>s+(Number(x.minutes)||0),0),avg=data.quizzes.length?data.quizzes.reduce((s,x)=>s+x.score,0)/data.quizzes.length:null;
+ $('home-time').textContent=mins(total);$('home-sessions').textContent=data.sessions.length;$('home-quizzes').textContent=data.quizzes.length;$('home-score').textContent=avg===null?'—':avg.toFixed(1);
+ $('stats-time').textContent=mins(total);$('stats-sessions').textContent=data.sessions.length;$('stats-cards').textContent=data.cardReviews;$('stats-score').textContent=avg===null?'—':avg.toFixed(1);
+ let days=[];for(let i=6;i>=0;i--){let d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()-i);let key=todayKey(d);let amount=data.sessions.filter(s=>s.date===key).reduce((n,s)=>n+s.minutes,0);days.push({key,label:i===0?'Hôm nay':['CN','T2','T3','T4','T5','T6','T7'][d.getDay()],amount})}
+ let max=Math.max(25,...days.map(d=>d.amount));$('week-chart').innerHTML=days.map(d=>`<div class="bar-row"><span>${d.label}</span><div class="bar-track"><div class="bar-fill" style="width:${d.amount/max*100}%"></div></div><strong>${d.amount} phút</strong></div>`).join('');
+ if(!data.quizzes.length){$('quiz-history').innerHTML='<div class="empty">Bạn chưa có bài kiểm tra nào. Hãy làm bài kiểm tra để bắt đầu theo dõi kết quả.</div>'}else{$('quiz-history').innerHTML=[...data.quizzes].reverse().slice(0,12).map(q=>`<div class="row spaced" style="padding:12px 0;border-bottom:1px solid var(--line)"><div><strong>${escapeHtml(q.date)}</strong><div class="small muted">${q.correct}/${q.total} câu đúng</div></div><strong>${Number(q.score).toFixed(1)}/10</strong></div>`).join('')}
+}
+$('export-data').addEventListener('click',()=>{let rows=[['loai','ngay','mon_hoc','phut','diem','cau_dung','tong_cau'],...data.sessions.map(s=>['phien_hoc',s.date,s.subject,s.minutes,'','','']),...data.quizzes.map(q=>['kiem_tra',q.date,'','',q.score,q.correct,q.total])];let csv='\ufeff'+rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\r\n');let blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='fighting-thong-ke.csv';a.click();URL.revokeObjectURL(url)});
+$('clear-data').addEventListener('click',()=>{if(confirm('Bạn có chắc muốn xóa toàn bộ thời gian học, điểm kiểm tra, lượt ôn và flashcard tự tạo trên trình duyệt này? Hành động này không thể hoàn tác.')){data=defaultData();save();renderCard();renderQuiz();toast('Đã xóa dữ liệu cục bộ.')}});
+renderStats();
+</script>
+</body>
+</html>
